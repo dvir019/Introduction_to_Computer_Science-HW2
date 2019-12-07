@@ -40,8 +40,8 @@ def get_encoded_sentence(sentence, shift):
     :param shift: The shift number
     :type shift: int
 
-    :return:
-    :rtype:
+    :return: The encoded sentence
+    :rtype: str
     """
     sentence = sentence.rstrip('!')
     encoded_sentence_list = []
@@ -53,7 +53,18 @@ def get_encoded_sentence(sentence, shift):
 
 
 def get_new_char(char, shift):
-    new_char = char
+    """
+    Gets the new char that replaces the current one in the encoded sentence.
+
+    :param char: The char
+    :type char: str
+    :param shift: The shift number
+    :type shift: int
+
+    :return: The new char
+    :rtype: str
+    """
+    new_char = char  # Assume that the char doesn't need to be changed
     if char == '#':
         new_char = '*'
     elif char == '?':
@@ -64,6 +75,17 @@ def get_new_char(char, shift):
 
 
 def get_new_letter(letter, shift):
+    """
+    Gets the new letter by cyclic shift of the current letter, according to the shift parameter.
+
+    :param letter: The letter
+    :type letter: str
+    :param shift: The shift number
+    :type shift: int
+
+    :return: The new letter
+    :rtype: str
+    """
     letters = [chr(ascii_value) for ascii_value in range(ord('a'), ord('z') + 1)]
     letter_difference = ord(letter) - ord('a')
     shift_sign = 1  # Assume that the letter is in even place
