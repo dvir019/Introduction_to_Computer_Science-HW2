@@ -45,8 +45,8 @@ def is_columns_valid(board):
 
 
 def is_squares_valid(board):
-    board_size=len(board)
-    square_size=int(board_size**0.5)
+    board_size = len(board)
+    square_size = int(board_size ** 0.5)
     for top_index in range(0, board_size, square_size):
         for left_index in range(0, board_size, square_size):
             if not check_square(board, top_index, left_index):
@@ -98,10 +98,11 @@ def is_counters_list_valid(counters_list):
             return False
     return True
 
+
 def print_results(is_valid):
     message_to_print = "Valid Solution!"  # Assume it's valid
     if not is_valid:
-        message_to_print =  "Invalid Solution"
+        message_to_print = "Invalid Solution"
 
     print(message_to_print)
 
