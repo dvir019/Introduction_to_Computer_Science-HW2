@@ -6,7 +6,8 @@ def main():
 
 
 def get_board_size():
-    board_size = int(input("Please enter the side of the board:"))
+    print("Please enter the side of the board:")
+    board_size = int(input())
     return board_size
 
 
@@ -98,7 +99,7 @@ def is_counters_list_valid(counters_list):
     return True
 
 def print_results(is_valid):
-    message_to_print = "Valid Solution!"
+    message_to_print = "Valid Solution!"  # Assume it's valid
     if not is_valid:
         message_to_print =  "Invalid Solution"
 
