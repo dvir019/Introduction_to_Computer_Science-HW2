@@ -32,6 +32,15 @@ def check_column(board, column_to_check):
     return check_list(lst)
 
 
+def check_square(board, top_index, left_index):
+    square_size = int(len(board) ** 0.5)
+    lst = []
+    for row in range(top_index, top_index + square_size):
+        for column in range(left_index, left_index + square_size):
+            lst.append(board[row][column])
+    return check_list(lst)
+
+
 def check_list(lst):
     list_length = len(lst)
     counters_list = generate_counters_list(list_length)
