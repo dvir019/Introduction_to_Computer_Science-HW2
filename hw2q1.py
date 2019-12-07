@@ -14,19 +14,33 @@ def get_board(board_size):
     for row in range(board_size):
         row_string = input()
         row_list = row_string.split(' ')
-        row_list=[int(str_number) for str_number in row_list]
+        row_list = [int(str_number) for str_number in row_list]
         board.append(row_list)
+    return board
+
 
 def check_row(board, row_to_check):
-    row_length = len(board[row_to_check])
-    counters_list = generate_counters_list(row_length)
-    for number in board[row_to_check]:
-        if number < 1 or number > row_length:
-            break
+    return check_list(board[row_to_check])
+
+
+def check_column(board, column_to_check):
+    lst = []
+    for row in range(len(board)):
+        number = board[row][column_to_check]
+        lst.append(number)
+
+    return check_list(lst)
+
+
+def check_list(lst):
+    list_length = len(lst)
+    counters_list = generate_counters_list(list_length)
+    for number in lst:
+        if number < 1 or number > list_length:
+            return False
         counters_list[number - 1] += 1
-    else:
-        return is_counters_list_valid(counters_list)
-    return False
+
+    return is_counters_list_valid(counters_list)
 
 
 def generate_counters_list(length):
