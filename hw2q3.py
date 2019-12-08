@@ -7,7 +7,6 @@ def main():
         - Every question mark (?) is removed.
         - Every letter gets shifted backwards or forward in a cyclic shift,
           according to the shift number the parity of the letter.
-
     """
     sentence = get_sentence()
     shift = get_shift()
