@@ -1,0 +1,3 @@
+Please enter the side of the board:
+Please enter a solution:
+Valid Solution!
