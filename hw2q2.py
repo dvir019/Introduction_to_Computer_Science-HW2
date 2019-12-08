@@ -31,17 +31,41 @@ def add_to_day(day, month, year, difference):
             difference = 0
         else:
             difference = difference - (days_in_month - day) - 1
-            day, month, year = get_next_month(day, month, year)
+            day, month, year = get_next_month(year, month)
+
     return day, month, year
 
 
-def get_next_month(day, month, year):
+def subtract_from_day(day, month, year, difference):
+    while difference > 0:
+        if day - difference > 0:
+            day -= difference
+            difference = 0
+        else:
+            difference -= day
+            day, month, year = get_previous_month(year, month)
+
+    return day, month, year
+
+
+def get_next_month(year, month):
     day = 1
     if month == 12:
         month = 1
         year += 1
     else:
         month += 1
+    return day, month, year
+
+
+def get_previous_month(year, month):
+    if month > 1:
+        month -= 1
+    else:
+        month = 12
+        year -= 1
+
+    day = get_number_of_days_in_month(year, month)
     return day, month, year
 
 
