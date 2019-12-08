@@ -125,7 +125,7 @@ def check_column(board, column_to_check):
     """
     Checks if a certain column in the board is valid.
     The method creates a list that contains the numbers of that column,
-    and than check that list.
+    and than checks if that list is valid.
 
     :param board: The sudoku board, as a 2D list
     :type board: list[list[int]]
@@ -144,6 +144,24 @@ def check_column(board, column_to_check):
 
 
 def check_square(board, top_index, left_index):
+    """
+    Checks if a certain square in the board is valid.
+    The method creates a list that contains the numbers of that square,
+    and than checks if that list is valid.
+
+    *** By using the terms "top index" and "left index",
+        the 2D list is being considered as a matrix.
+
+    :param board: The sudoku board, as a 2D list
+    :type board: list[list[int]]
+    :param top_index: The top index of the square
+    :type top_index: int
+    :param left_index: The left index of the square
+    :type left_index: int
+
+    :return: Whether or not the square is valid
+    :rtype: bool
+    """
     square_size = int(len(board) ** 0.5)
     lst = []
     for row in range(top_index, top_index + square_size):
@@ -153,6 +171,19 @@ def check_square(board, top_index, left_index):
 
 
 def check_list(lst):
+    """
+    Checks if a given list of numbers is valid.
+
+    *** A valid list means that all of the numbers from one up to the
+        length of the list (inclusive) are in the list, and each numbers
+        appears only once.
+
+    :param lst: The list of numbers
+    :type lst: list[int]
+
+    :return: Whether or not the list is valid
+    :rtype: bool
+    """
     list_length = len(lst)
     counters_list = generate_counters_list(list_length)
     for number in lst:
@@ -164,11 +195,29 @@ def check_list(lst):
 
 
 def generate_counters_list(length):
+    """
+    Generates a list of zeros in a certain length, and returns it.
+
+    :param length: The length of the list
+    :type length: int
+
+    :return: The list of zeros
+    :rtype: list[int]
+    """
     counters_list = [0 for item in range(length)]
     return counters_list
 
 
 def is_counters_list_valid(counters_list):
+    """
+    Checks if the counters list is valid - it contains only ones.
+
+    :param counters_list: The counters list
+    :type counters_list: list[int]
+
+    :return: Whether or not the counters list is valid
+    :rtype: bool
+    """
     for counter in counters_list:
         if counter != 1:
             return False
@@ -176,8 +225,14 @@ def is_counters_list_valid(counters_list):
 
 
 def print_results(is_valid):
-    message_to_print = "Valid Solution!"  # Assume it's valid
-    if not is_valid:
+    """
+    Prints the results.
+
+    :param is_valid: Whether or not the whole board is valid
+    :type is_valid: bool
+    """
+    message_to_print = "Valid Solution!"  # Assume the solution is valid
+    if not is_valid:  # The solution is invalid
         message_to_print = "Invalid Solution"
 
     print(message_to_print)
