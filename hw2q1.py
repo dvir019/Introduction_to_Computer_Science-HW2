@@ -1,4 +1,9 @@
 def main():
+    """
+    The program gets from the user a positive number with a whole square root,
+    and a squared matrix of numbers representing a sudoku board,
+    checks whether or not this is a valid solution, and prints the result.
+    """
     board_size = get_board_size()
     board = get_board(board_size)
     is_valid = is_board_valid(board)
