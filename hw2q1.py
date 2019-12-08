@@ -26,6 +26,9 @@ def get_board(board_size):
     """
     Gets the sudoku board from the user, and returns it as a 2D list.
 
+    *** The user enters the board line by line, and the numbers in every line
+        are separated by a space.
+
     :param board_size: The size of the board
     :type board_size: int
 
@@ -140,7 +143,7 @@ def check_column(board, column_to_check):
     :return: Whether or not the column is valid
     :rtype: bool
     """
-    lst = []
+    lst = []  # List of the numbers in the column
     for row in range(len(board)):
         number = board[row][column_to_check]
         lst.append(number)
@@ -168,7 +171,7 @@ def check_square(board, top_index, left_index):
     :rtype: bool
     """
     square_size = int(len(board) ** 0.5)
-    lst = []
+    lst = []  # List of the numbers in the square
     for row in range(top_index, top_index + square_size):
         for column in range(left_index, left_index + square_size):
             lst.append(board[row][column])
@@ -192,7 +195,7 @@ def check_list(lst):
     list_length = len(lst)
     counters_list = generate_counters_list(list_length)
     for number in lst:
-        if number < 1 or number > list_length:
+        if (number < 1) or (number > list_length):  # The number not in the interval [1, len(lst)]
             return False
         counters_list[number - 1] += 1
 
@@ -224,7 +227,7 @@ def is_counters_list_valid(counters_list):
     :rtype: bool
     """
     for counter in counters_list:
-        if counter != 1:
+        if counter != 1:  # The number didn't appear exactly once
             return False
     return True
 
