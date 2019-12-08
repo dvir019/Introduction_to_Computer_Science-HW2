@@ -39,6 +39,7 @@ def get_board(board_size):
     print("Please enter a solution:")
     for row in range(board_size):
         row_string = input()
+        row_string.strip()  # Remove any leading and trailing spaces, if there are
         row_list = row_string.split(' ')
         row_list = [int(str_number) for str_number in row_list]
         board.append(row_list)
