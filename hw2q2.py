@@ -1,7 +1,7 @@
 def main():
     day, month, year = get_date()
     difference = get_difference()
-    new_day, new_month, new_year = get_new_date(day, month, year)
+    new_day, new_month, new_year = get_new_date(day, month, year, difference)
     print_date(new_day, new_month, new_year)
 
 
@@ -15,6 +15,34 @@ def get_date():
 def get_difference():
     difference = int(input("Enter number of days:"))
     return difference
+
+
+def get_new_date(day, month, year, difference):
+    if (difference >= 0):
+        return add_to_day(day, month, year, difference)
+    return subtract_from_day(day, month, year, -difference)
+
+
+def add_to_day(day, month, year, difference):
+    while difference > 0:
+        days_in_month = get_number_of_days_in_month(year, month)
+        if day + difference <= days_in_month:
+            day += difference
+            difference = 0
+        else:
+            difference = difference - (days_in_month - day) - 1
+            day, month, year = get_next_month(day, month, year)
+    return day, month, year
+
+
+def get_next_month(day, month, year):
+    day = 1
+    if month == 12:
+        month = 1
+        year += 1
+    else:
+        month += 1
+    return day, month, year
 
 
 def is_leap_year(year):
