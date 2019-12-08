@@ -1,8 +1,12 @@
 def main():
     day, month, year = get_date()
     difference = get_difference()
-    new_day, new_month, new_year = get_new_date(day, month, year, difference)
-    print_date(new_day, new_month, new_year)
+    is_valid = is_date_valid(day, month, year)
+    if is_valid:
+        new_day, new_month, new_year = get_new_date(day, month, year, difference)
+        print_date(new_day, new_month, new_year)
+    else:
+        print_invalid_date()
 
 
 def get_date():
@@ -15,6 +19,15 @@ def get_date():
 def get_difference():
     difference = int(input("Enter number of days:"))
     return difference
+
+
+def is_date_valid(day, month, year):
+    is_valid = False  # Assume the date is invalid
+    days_in_month = get_number_of_days_in_month(year, month)
+    if (day > 0) and (day <= days_in_month) and (month > 0) and (month <= 12):  # Valid date
+        is_valid = True
+
+    return is_valid
 
 
 def get_new_date(day, month, year, difference):
@@ -95,6 +108,11 @@ def get_number_of_days_in_month(year, month):
 def print_date(day, month, year):
     date = f"{day}/{month}/{year}"
     print(date)
+
+
+def print_invalid_date():
+    message = "The given date is invalid."
+    print(message)
 
 
 if __name__ == '__main__':
