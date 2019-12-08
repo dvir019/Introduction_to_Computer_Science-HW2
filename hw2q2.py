@@ -10,6 +10,12 @@ def main():
 
 
 def get_date():
+    """
+    Gets a date from the user, splits it into day, month and year, and returns them.
+
+    :return: The day, month and year
+    :rtype: tuple[int, int, int]
+    """
     date_str = input("Enter a date:")
     date_list = date_str.split('/')
     day, month, year = [int(part_of_date) for part_of_date in date_list]
