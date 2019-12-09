@@ -75,6 +75,7 @@ def get_new_date(day, month, year, difference):
     """
     if difference >= 0:
         return add_to_day(day, month, year, difference)
+
     return subtract_from_day(day, month, year, -difference)
 
 
@@ -94,14 +95,14 @@ def add_to_day(day, month, year, difference):
     :return: The new date
     :rtype: tuple[int, int, int]
     """
-    while difference > 0:
+    while difference > 0:  # Keep adding the days until there are no more days to add
         days_in_month = get_number_of_days_in_month(year, month)
-        if day + difference <= days_in_month:
+        if day + difference <= days_in_month:  # Able to add the days without exceeding the limit of the month
             day += difference
-            difference = 0
+            difference = 0  # There are no more days to add
         else:
-            difference = difference - (days_in_month - day) - 1
-            day, month, year = get_next_month(year, month)
+            difference = difference - (days_in_month - day) - 1  # Calculate the new difference
+            day, month, year = get_next_month(year, month)  # Get the date of the next month
 
     return day, month, year
 
@@ -122,13 +123,13 @@ def subtract_from_day(day, month, year, difference):
     :return: The new date
     :rtype: tuple[int, int, int]
     """
-    while difference > 0:
-        if day - difference > 0:
+    while difference > 0:  # Keep subtracting the days until there are no more days to subtract
+        if day - difference > 0:  # Able to subtract the days without exceeding the limit of the month
             day -= difference
-            difference = 0
+            difference = 0  # There are no more days to subtract
         else:
-            difference -= day
-            day, month, year = get_previous_month(year, month)
+            difference -= day  # Calculate the new difference
+            day, month, year = get_previous_month(year, month)  # Get the date of the previous month
 
     return day, month, year
 
@@ -145,11 +146,11 @@ def get_next_month(year, month):
     :return: The date of the first day of the consecutive month
     :rtype: tuple[int, int, int]
     """
-    day = 1
-    if month == 12:
+    day = 1  # The first day of every month is one
+    if month == 12:  # Last month of the year
         month = 1
         year += 1
-    else:
+    else:  # Not the last month of the year
         month += 1
 
     return day, month, year
@@ -167,13 +168,13 @@ def get_previous_month(year, month):
     :return: The date of the last day of the previous month
     :rtype: tuple[int, int, int]
     """
-    if month > 1:
-        month -= 1
-    else:
+    if month == 1:  # First month of the year
         month = 12
         year -= 1
+    else:  # Not the first month of the year
+        month -= 1
 
-    day = get_number_of_days_in_month(year, month)
+    day = get_number_of_days_in_month(year, month)  # The last day of the month depends on the month and the year
 
     return day, month, year
 
@@ -193,6 +194,7 @@ def is_leap_year(year):
         is_leap = True
     elif (year % 4 == 0) and (year % 100 != 0):
         is_leap = True
+
     return is_leap
 
 
@@ -209,10 +211,10 @@ def get_number_of_days_in_month(year, month):
     :rtype: int
     """
     days_with_thirty_days = [4, 6, 9, 11]
-    number_of_days = 31
-    if month in days_with_thirty_days:
+    number_of_days = 31  # Assume it's a month with thirty one days
+    if month in days_with_thirty_days:  # It's a month with thirty days
         number_of_days = 30
-    elif month == 2:
+    elif month == 2:  # It's February - Requires a check for leap year
         if is_leap_year(year):
             number_of_days = 29
         else:
