@@ -1,4 +1,9 @@
 def main():
+    """
+    The program gets from the user a date, in the format day/month/year, and an integer,
+    calculates the date that amount of days after/before the given date
+    (depends on the sign of the number), and prints the result.
+    """
     day, month, year = get_date()
     difference = get_difference()
     is_valid = is_date_valid(day, month, year)
