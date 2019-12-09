@@ -37,7 +37,7 @@ def is_date_valid(day, month, year):
 
 
 def get_new_date(day, month, year, difference):
-    if (difference >= 0):
+    if difference >= 0:
         return add_to_day(day, month, year, difference)
     return subtract_from_day(day, month, year, -difference)
 
