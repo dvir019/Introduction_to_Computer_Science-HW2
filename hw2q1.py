@@ -126,7 +126,7 @@ def check_row(board, row_to_check):
     :return: Whether or not the row is valid
     :rtype: bool
     """
-    lst = board[row_to_check]
+    lst = board[row_to_check]  # The row is already one build list
     return check_list(lst)
 
 
@@ -176,6 +176,7 @@ def check_square(board, top_index, left_index):
     for row in range(top_index, top_index + square_size):
         for column in range(left_index, left_index + square_size):
             lst.append(board[row][column])
+
     return check_list(lst)
 
 
