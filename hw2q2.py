@@ -6,12 +6,8 @@ def main():
     """
     day, month, year = get_date()
     difference = get_difference()
-    is_valid = is_date_valid(day, month, year)
-    if is_valid:
-        new_day, new_month, new_year = get_new_date(day, month, year, difference)
-        print_date(new_day, new_month, new_year)
-    else:
-        print_invalid_date()
+    new_day, new_month, new_year = get_new_date(day, month, year, difference)
+    print_date(new_day, new_month, new_year)
 
 
 def get_date():
@@ -37,28 +33,6 @@ def get_difference():
     """
     difference = int(input("Enter number of days:"))
     return difference
-
-
-def is_date_valid(day, month, year):
-    """
-    Checks if a given date is valid, and returns the result.
-
-    :param day: The day of the date
-    :type day: int
-    :param month: The month of the date
-    :type month: int
-    :param year: The year of the date
-    :type year: int
-
-    :return: Whether or not the day is valid
-    :rtype: bool
-    """
-    is_valid = False  # Assume the date is invalid
-    days_in_month = get_number_of_days_in_month(year, month)
-    if (day > 0) and (day <= days_in_month) and (month > 0) and (month <= 12):  # Valid date
-        is_valid = True
-
-    return is_valid
 
 
 def get_new_date(day, month, year, difference):
@@ -241,14 +215,6 @@ def print_date(day, month, year):
     """
     date = f"{day}/{month}/{year}"
     print(date)
-
-
-def print_invalid_date():
-    """
-    Prints that the given date is invalid.
-    """
-    message = "The given date is invalid."
-    print(message)
 
 
 if __name__ == '__main__':
