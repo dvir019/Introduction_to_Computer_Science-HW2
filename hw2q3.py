@@ -32,7 +32,7 @@ def get_shift():
     """
     Gets the shift number from the user, and returns it.
 
-    :return: The shift number
+    :return: The shift number (A non-negative integer)
     :rtype: int
     """
     print("Please enter the size of the shift:")
@@ -52,7 +52,7 @@ def get_encoded_sentence(sentence, shift):
     :return: The encoded sentence
     :rtype: str
     """
-    sentence = sentence.rstrip('!')
+    sentence = sentence.rstrip('!')  # Remove the exclamation marks in the end
     encoded_sentence_list = []  # List of the letters of the encoded sentence
     for char in sentence:
         new_char = get_new_char(char, shift)
